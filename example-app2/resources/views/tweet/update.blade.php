@@ -10,7 +10,7 @@
   <h1>Tweetの編集</h1>
   <div>
     <a href="{{ route('tweet.index') }}">🔙 戻る</a>
-    <p>投稿フォーム</p>
+    <h3>投稿フォーム</h3>
     @if (session('feedback.success'))
       <p style="color: coral;">{{ session('feedback.success') }}</p>
     @endif
