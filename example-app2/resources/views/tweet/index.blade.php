@@ -7,25 +7,31 @@
   <title>Tweet App</title>
 </head>
 <body>
-  <div>
-    <h1>Tweet App</h1>
-    <h3>投稿フォーム</h3>
+  <h1>Tweet App</h1>
+  
+  @auth
+      
+    <div>
+      <h3>投稿フォーム</h3>
 
-    @if (session('feedback.success'))
-        <p style="color:gold;">{{ session('feedback.success') }}</p>
-    @endif
+      @if (session('feedback.success'))
+          <p style="color:gold;">{{ session('feedback.success') }}</p>
+      @endif
 
-    <form action="{{ route('tweet.create') }}" method="post">
-      @csrf
-      <label for="tweet-content">つぶやき</label>
-      <span>140文字以内</span>
-      <textarea name="tweet" id="tweet-content" type="text" placeholder="つぶやきを入力"></textarea>
-      @error('tweet')
-      <p style="color: red;">{{ $message }}</p>
-      @enderror
-      <button type="submit">投稿</button>
-    </form>
-  </div>
+      <form action="{{ route('tweet.create') }}" method="post">
+        @csrf
+        <label for="tweet-content">つぶやき</label>
+        <span>140文字以内</span>
+        <textarea name="tweet" id="tweet-content" type="text" placeholder="つぶやきを入力"></textarea>
+        @error('tweet')
+        <p style="color: red;">{{ $message }}</p>
+        @enderror
+        <button type="submit">投稿</button>
+      </form>
+    </div>
+
+  @endauth
+
   <div>
     @foreach ($tweets as $tweet) 
       <details>
