@@ -6,7 +6,7 @@ use Carbon\Carbon;
 
 class TweetService {
   public function getTweets() {
-    return Tweet::orderBy('created_at', 'DESC')->get();
+    return Tweet::with('images')->orderBy('created_at', 'DESC')->get();
   }
 
   //! ログインしてるユーザーのtweetかどうかの確認を行うメソッド
@@ -19,7 +19,8 @@ class TweetService {
     return $tweet->user_id === $userId;
   }
 
-  public function countYesterdayTweets(): int {
+  public function countYesterdayTweets(): int 
+  {
     return Tweet::whereDate('created_at', '>=',
     Carbon::yesterday()->toDateTimeString())
       ->whereDate('created_at', '<',

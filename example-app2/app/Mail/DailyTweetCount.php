@@ -26,18 +26,9 @@ class DailyTweetCount extends Mailable implements ShouldQueue
         $this->count = $count;
     }
 
-    public function build() {
-        return $this->subject("昨日は{$this->count}件のTweetが追加されました！")
-            ->markdown('email.daily_tweet_count');
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array
-     */
-    public function attachments()
+    public function build() 
     {
-        return [];
+        return $this->subject("昨日は{$this->count}件のTweetが追加されました!")
+            ->markdown('email.daily_tweet_count');
     }
 }
